@@ -2,22 +2,17 @@ namespace ExpenseTracker.UI;
 
 public class UIHandler
 {
-    public void ShowGlobalErrorMsg()
+    public void GlobalErrorMsg()
     {
         throw new NotImplementedException();
     }
 
-    public void DrawMenuHeading()
+    public void MenuHeading()
     {
         throw new NotImplementedException();
     }
 
-    public void ShowMenuHeading()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void ShowMenuList()
+    public void MenuList()
     {
         throw new NotImplementedException();
     }
@@ -33,6 +28,16 @@ public class UIHandler
     }
 
     public void UserIncorrectChoiceText()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WelcomeBackMsg(string name)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void WelcomeNewUser()
     {
         throw new NotImplementedException();
     }

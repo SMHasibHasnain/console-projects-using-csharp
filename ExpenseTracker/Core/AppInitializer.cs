@@ -24,13 +24,18 @@ public class AppInitializer : IAppInitializer
     {
         if(_userService.DoesUserExist())
         {
+            _userSession.CurrentUser = _userService
+                .GetUser();
+            _userSession.ExpenseList = _expenseService
+                .GetExpenseList();
             
+            _uiHandler.WelcomeBackMsg( _userSession
+                .CurrentUser.Name);
 
         } else
         {
-            
+            _uiHandler.WelcomeNewUser();
+            _userService.RegisterNewUser();
         }
-
-        
     }
 }

@@ -1,6 +1,6 @@
 namespace ExpenseTracker.Service;
 
-using ExpenseTracker.Core;
+using ExpenseTracker.Entity;
 using ExpenseTracker.Shared;
 
 public class UserService : IUserService
@@ -18,6 +18,16 @@ public class UserService : IUserService
     }
 
     public void EditProfile()
+    {
+        throw new NotImplementedException();
+    }
+
+    public User GetUser()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RegisterNewUser()
     {
         throw new NotImplementedException();
     }

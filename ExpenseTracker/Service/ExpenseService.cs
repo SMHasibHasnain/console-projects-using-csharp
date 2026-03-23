@@ -1,6 +1,6 @@
 namespace ExpenseTracker.Service;
 
-using ExpenseTracker.Core;
+using ExpenseTracker.Entity;
 using ExpenseTracker.Shared;
 
 public class ExpenseService : IExpenseService
@@ -12,6 +12,11 @@ public class ExpenseService : IExpenseService
     }
 
     public void AddNewExpense()
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Expense> GetExpenseList()
     {
         throw new NotImplementedException();
     }

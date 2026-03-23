@@ -26,8 +26,8 @@ public class AppRunner : IAppRunner
 
         while(isRunning)
         {
-            _uiHandler.ShowMenuHeading();
-            _uiHandler.ShowMenuList();
+            _uiHandler.MenuHeading();
+            _uiHandler.MenuList();
             if(_uiHandler.TakeUserChoice(out int userChoice)) ProcessUserChoice(userChoice);
             else
             {

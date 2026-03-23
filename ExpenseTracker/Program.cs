@@ -24,6 +24,6 @@ try
     
 } catch (Exception ex)
 {
-    uiHandler.ShowGlobalErrorMsg();
+    uiHandler.GlobalErrorMsg();
     logKeeper.TakeEntry(ex);
 }
