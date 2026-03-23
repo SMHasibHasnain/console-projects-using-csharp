@@ -1,23 +1,24 @@
-using ExpenseTracker.Data;
-using ExpenseTracker.Logging;
 using ExpenseTracker.UI;
+using ExpenseTracker.Entity;
 
 namespace ExpenseTracker.Core;
 public class AppRunner : IAppRunner
 {
     private readonly UIHandler _uiHandler;
-    private readonly IExpenseRepository _expenseRepo; 
-    private readonly ILogKeeper _logkeeper; 
-    public AppRunner(UIHandler ui, IExpenseRepository expenseRepo, ILogKeeper logkeeper)
+    private readonly IExpenseService _expenseService;
+    private readonly IUserService _userService;
+
+    public AppRunner(UIHandler ui, IExpenseService expenseService, IUserService userService)
     {
         _uiHandler = ui;
-        _expenseRepo = expenseRepo;
-        _logkeeper = logkeeper;
+        _expenseService = expenseService;
+        _userService = userService;
     }
     
     public void Run()
     {
         var isRunning = true;
+
         while(isRunning)
         {
             _uiHandler.ShowMenuHeading();
@@ -38,26 +39,26 @@ public class AppRunner : IAppRunner
         switch(menuSelected)
         {
             case MenuItem.AddNewExpense:
-                
-                break;
-            case MenuItem.FilterbyCategory:
-
-                break;
-
-            case MenuItem.SaveAndExit:
-
+                _expenseService.AddNewExpense();
                 break;
 
             case MenuItem.ShowTotalSummary:
-
+                _expenseService.ShowTotalSummary();
                 break;
 
             case MenuItem.ViewAllExpenses:
+                _expenseService.ViewAllExpenses();
+                break;    
 
+            case MenuItem.EditProfile:
+                _userService.EditProfile();
                 break;
 
-            case 0:
+            case MenuItem.SaveAndExit:
+                _expenseService.SaveAndExit();
+                break;    
 
+            default:
                 _uiHandler.MenuDefaultCaseText();           
                 break;    
         }

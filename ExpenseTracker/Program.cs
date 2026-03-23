@@ -6,9 +6,10 @@ using ExpenseTracker.UI;
 UIHandler uiHandler = new();
 IExpenseRepository expenseRepo = new ExpenseRepository();
 ILogKeeper logKeeper = new LogKeeper();
+IExpenseService expenseService = new ExpenseService();
+IUserService userService = new UserService();
 
-
-IAppRunner app = new AppRunner(uiHandler, expenseRepo, logKeeper);
+IAppRunner app = new AppRunner(uiHandler, expenseService, userService);
 
 
 try
@@ -21,12 +22,46 @@ try
     logKeeper.TakeEntry(ex);
 }
 
-
-enum MenuItem
+public class UserService : IUserService
 {
-    AddNewExpense = 1,
-    ViewAllExpenses,
-    FilterbyCategory,
-    ShowTotalSummary,
-    SaveAndExit
+    public void EditProfile()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public interface IUserService
+{
+    void EditProfile();
+}
+
+public class ExpenseService : IExpenseService
+{
+    public void AddNewExpense()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SaveAndExit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ShowTotalSummary()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ViewAllExpenses()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public interface IExpenseService
+{
+    void AddNewExpense();
+    void SaveAndExit();
+    void ShowTotalSummary();
+    void ViewAllExpenses();
 }
