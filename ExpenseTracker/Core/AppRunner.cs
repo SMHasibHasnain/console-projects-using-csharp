@@ -1,5 +1,6 @@
 using ExpenseTracker.UI;
 using ExpenseTracker.Entity;
+using ExpenseTracker.Service;
 
 namespace ExpenseTracker.Core;
 public class AppRunner : IAppRunner
