@@ -1,6 +1,6 @@
 namespace ExpenseTracker.Entity;
 
-class User
+public class User
 {
     public string Id { get; } = Guid.CreateVersion7().ToString();
     public string Name {get; private set;}

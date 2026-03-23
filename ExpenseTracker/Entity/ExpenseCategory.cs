@@ -1,6 +1,6 @@
 namespace ExpenseTracker.Entity;
 
-enum ExpenseCategory
+public enum ExpenseCategory
 {
     HEALTH,
     ENTERTAINMENT

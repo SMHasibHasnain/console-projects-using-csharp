@@ -1,6 +1,6 @@
 namespace ExpenseTracker.Entity;
 
-class Expense
+public class Expense
 {
     public string Id {get; } = Guid.CreateVersion7().ToString();
     public string? Title {get; private set;}
@@ -12,5 +12,6 @@ class Expense
         Title = title;
         Category = expenseCategory;
         Amount = amount;
+        Category = expenseCategory;
     }
 }

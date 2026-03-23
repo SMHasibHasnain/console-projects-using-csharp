@@ -1,6 +1,7 @@
 using ExpenseTracker.UI;
 using ExpenseTracker.Entity;
 using ExpenseTracker.Service;
+using ExpenseTracker.Shared;
 
 namespace ExpenseTracker.Core;
 public class AppRunner : IAppRunner
@@ -8,12 +9,15 @@ public class AppRunner : IAppRunner
     private readonly UIHandler _uiHandler;
     private readonly IExpenseService _expenseService;
     private readonly IUserService _userService;
+    private readonly UserSession _userSession;
 
-    public AppRunner(UIHandler ui, IExpenseService expenseService, IUserService userService)
+    public AppRunner(UIHandler ui, IExpenseService expenseService, 
+        IUserService userService, UserSession userSession)
     {
         _uiHandler = ui;
         _expenseService = expenseService;
         _userService = userService;
+        _userSession = userSession;
     }
     
     public void Run()
