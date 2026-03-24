@@ -1,16 +1,27 @@
+using System.Text.Json;
 using ExpenseTracker.Entity;
 
 namespace ExpenseTracker.Data;
 
 public class UserRepository : IUserRepository
 {
+    private readonly string _userFile;
+
+    public UserRepository(string userFile)
+    {
+        _userFile = userFile;
+    }
+
     public bool Exist()
     {
-        throw new NotImplementedException();
+        if(File.Exists(_userFile)) return true;
+        return false;
     }
 
     public User Get()
     {
-        throw new NotImplementedException();
+        var jsonData = File.ReadAllText(_userFile);
+        var user = JsonSerializer.Deserialize<User>(jsonData);
+        return user;
     }
 }

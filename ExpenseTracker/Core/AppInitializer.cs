@@ -26,12 +26,20 @@ public class AppInitializer : IAppInitializer
             && _expenseService.TryLoadExpenseIntoSession())
         {
             _uiHandler.WelcomeBackMsg( _userSession
-                .CurrentUser.Name);
+                .CurrentUser.Name); 
 
         } else
         {
             _uiHandler.WelcomeNewUser();
-            _userService.RegisterNewUser();
+            _uiHandler.AskUserForInfo(out string name, out decimal incomePerMonth);
+            var isValid = _userService.TryRegisterAndLoadNewUser(name, incomePerMonth);
+            if(isValid) _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser);
+            else
+            {
+                _uiHandler.RegistrationFaildMsg();
+                _uiHandler.TryAgainMsg();
+                Init();
+            }
         }
     }
 }
