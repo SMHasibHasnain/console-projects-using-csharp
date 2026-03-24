@@ -23,61 +23,26 @@
 
 ## 🧠 Concepts Covered
 
-- 🔹 Object-Oriented Programming (OOP)
-  - Encapsulation  
-  - Inheritance  
-  - Polymorphism  
-  - Abstraction  
-
-- 🔹 Exception Handling  
-  - try-catch  
-  - Custom exceptions  
-
-- 🔹 File Handling  
-  - File read/write  
-  - Data persistence  
-
-- 🔹 Collections & Data Structures  
-- 🔹 Clean Code Principles  
+- Object-Oriented Programming (OOP)
+- Exception Handling  
+- File Handling   
+- Collections & Data Structures  
+- Clean Code Principles  
+- SOLID Principles
 
 
-## 📂 Project Structure
-
-```
-
-ProjectName/
-│
-├── Program.cs
-├── Models/
-├── Services/
-├── Utilities/
-├── Exceptions/
-└── README.md
-
-````
 
 
 ## 🛠️ Projects
 
-| Project | Description | Concepts |
-|--------|------------|----------|
-| <del>_Expense Tracker_</del> | <del>_Track Daily Expenses_</del> | <del>_OOP, File Handling_</del>|
-| Banking System | Banking simulation | OOP, Exception Handling |
-| Student Management | Manage student data | File Handling |
-| Inventory System | Product tracking | Collections |
+| Project | Description | Concepts | Status
+|--------|------------|----------|-----------|
+| Expense Tracker | Track Daily Expenses | OOP, File Handling| Processing  |
+| Banking System | Banking simulation | OOP, Exception Handling | Not Started |
+| Student Management | Manage student data | File Handling | Not Started |
+| Inventory System | Product tracking | Collections | Not Started |
 
 > More projects coming soon...
-
-
-
-## 📚 Getting Started
-
-```bash
-git clone https://github.com/your-username/console-projects-using-csharp.git
-cd console-projects-using-csharp
-````
-
-Open in Visual Studio or VS Code and run any project.
 
 
 
