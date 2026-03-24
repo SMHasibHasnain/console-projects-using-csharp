@@ -8,13 +8,13 @@ using ExpenseTracker.UI;
 
 var userFile = "user.json";
 var expenseFile = "expenseList.json";
-var logFile = "logs.txt";
+var logDirectory = "logs";
 
 UserSession userSession = new();
 UIHandler uiHandler = new();
 IExpenseRepository expenseRepo = new ExpenseRepository(expenseFile);
 IUserRepository userRepo = new UserRepository(userFile);
-ILogKeeper logKeeper = new LogKeeper(logFile);
+ILogKeeper logKeeper = new LogKeeper(logDirectory);
 IExpenseService expenseService = new ExpenseService(expenseRepo, userSession);
 IUserService userService = new UserService(userRepo, userSession);
 
@@ -30,7 +30,7 @@ try
     
 } catch (Exception ex)
 {
-    // uiHandler.GlobalErrorMsg();
-    // logKeeper.TakeEntry(ex);
+    uiHandler.GlobalErrorMsg();
+    logKeeper.TakeEntry(ex);
     throw;
 }
