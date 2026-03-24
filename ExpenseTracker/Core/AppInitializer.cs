@@ -22,23 +22,30 @@ public class AppInitializer : IAppInitializer
 
     public void Init()
     {
-        if(_userService.TryLoadUserIntoSession() 
-            && _expenseService.TryLoadExpenseIntoSession())
+        if(_userService.TryLoadUserIntoSession())
         {
             _uiHandler.WelcomeBackMsg( _userSession
                 .CurrentUser.Name); 
+            _expenseService.TryLoadExpenseIntoSession();    
 
         } else
         {
+            bool isRegistered = false;
             _uiHandler.WelcomeNewUser();
-            _uiHandler.AskUserForInfo(out string name, out decimal incomePerMonth);
-            var isValid = _userService.TryRegisterAndLoadNewUser(name, incomePerMonth);
-            if(isValid) _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser);
-            else
+            while(!isRegistered)
             {
-                _uiHandler.RegistrationFaildMsg();
-                _uiHandler.TryAgainMsg();
-                Init();
+                _uiHandler.AskUserForInfo(out string name, out decimal incomePerMonth);
+                var isValid = _userService.TryRegisterAndLoadNewUser(name, incomePerMonth);
+                if(isValid)
+                {
+                    _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser);
+                    isRegistered = true;
+                }
+                else
+                {
+                    _uiHandler.RegistrationFaildMsg();
+                    _uiHandler.TryAgainMsg();
+                }
             }
         }
     }
