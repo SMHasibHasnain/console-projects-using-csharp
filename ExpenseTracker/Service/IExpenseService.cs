@@ -4,10 +4,10 @@ namespace ExpenseTracker.Service;
 
 public interface IExpenseService
 {
-    void AddNewExpense();
+    void AddNewExpense(Expense expenseDto);
     List<Expense> GetExpenseList();
+    void Save();
     void SaveAndExit();
-    void ShowTotalSummary();
+    void TotalSummary();
     bool TryLoadExpenseIntoSession();
-    void ViewAllExpenses();
 }

@@ -34,8 +34,8 @@ public class AppInitializer : IAppInitializer
             _uiHandler.WelcomeNewUser();
             while(!isRegistered)
             {
-                _uiHandler.AskUserForInfo(out string name, out decimal incomePerMonth);
-                var isValid = _userService.TryRegisterAndLoadNewUser(name, incomePerMonth);
+                var newUser = _uiHandler.AskUserForInfo();
+                var isValid = _userService.TryRegisterAndLoadNewUser(newUser);
                 if(isValid)
                 {
                     _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser.Name);

@@ -64,18 +64,21 @@ public class UIHandler
         Console.ResetColor();
     }
 
-    public void AskUserForInfo(out string name, out decimal incomePerMonth)
+    public User AskUserForInfo()
     {
         Console.Write("Enter your name: ");
-        name = Console.ReadLine() ?? string.Empty;
+        String name = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Enter your monthly income: ");
+
+        decimal incomePerMonth;
         while (!decimal.TryParse(Console.ReadLine(), out incomePerMonth) || incomePerMonth < 0)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Invalid amount! Please enter a valid positive number: ");
             Console.ResetColor();
         }
+        return new User(name, incomePerMonth);
     }
 
     public void RegistrationCompleteMsg(string currentUserName)
@@ -97,5 +100,49 @@ public class UIHandler
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("Please try again...");
         Console.ResetColor();
+    }
+
+    public Expense AskExpenseInfo()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n--- Enter Expense Details ---");
+        Console.ResetColor();
+
+        Console.Write("Enter a title for this expense (Optional): ");
+        string title = Console.ReadLine() ?? string.Empty;
+        
+
+        decimal amount;
+        Console.Write("Enter expense amount: ");
+        while (!decimal.TryParse(Console.ReadLine(), out amount) || amount <= 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Invalid amount! Please enter a valid positive number: ");
+            Console.ResetColor();
+        }
+
+        string category;
+        Console.Write("Enter category (e.g., Food, Transport, Bills): ");
+        while (string.IsNullOrWhiteSpace(category = Console.ReadLine()))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Category cannot be empty! Please enter a category: ");
+            Console.ResetColor();
+        }
+
+        Console.Write("Enter a short note (optional): ");
+        string note = Console.ReadLine() ?? string.Empty;
+
+        return new Expense(title, category, amount, note);
+    }
+
+    public void ShowAllExpenses(List<Expense> expenseList)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("--- All Expenses List --");
+        foreach(var item in expenseList)
+        {
+            Console.WriteLine($"{item.Title}  {item.Category}  {item.Amount}  {item.Note}");
+        }
     }
 }

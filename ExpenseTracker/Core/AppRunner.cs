@@ -44,15 +44,16 @@ public class AppRunner : IAppRunner
         switch(menuSelected)
         {
             case MenuItem.AddNewExpense:
-                _expenseService.AddNewExpense();
+                var expenseDto = _uiHandler.AskExpenseInfo();
+                _expenseService.AddNewExpense(expenseDto);
                 break;
 
             case MenuItem.ShowTotalSummary:
-                _expenseService.ShowTotalSummary();
+                _expenseService.TotalSummary();
                 break;
 
             case MenuItem.ViewAllExpenses:
-                _expenseService.ViewAllExpenses();
+                _uiHandler.ShowAllExpenses( _userSession.ExpenseList);
                 break;    
 
             case MenuItem.EditProfile:
@@ -60,7 +61,8 @@ public class AppRunner : IAppRunner
                 break;
 
             case MenuItem.SaveAndExit:
-                _expenseService.SaveAndExit();
+                _expenseService.Save();
+                _userService.Save();
                 break;    
 
             default:

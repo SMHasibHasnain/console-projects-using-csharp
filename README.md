@@ -1,4 +1,4 @@
-# 🎯 Console Projects Using C#
+# Console Projects Using C#
 
 <p align="center">
   <b>Learn C# by building real-world console applications</b><br/>
@@ -12,7 +12,7 @@
 </p>
 
 
-## 🚀 Overview
+## Overview
 
 **Console Projects Using C#** is a collection of practical console applications to help you master C# by building real projects.
 
@@ -21,7 +21,7 @@
 - Write clean and structured code
 
 
-## 🧠 Concepts Covered
+## Concepts Covered
 
 - Object-Oriented Programming (OOP)
 - Exception Handling  
@@ -33,7 +33,7 @@
 
 
 
-## 🛠️ Projects
+## Projects
 
 | Project | Description | Concepts | Status
 |--------|------------|----------|-----------|
@@ -46,7 +46,7 @@
 
 
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome!
 
@@ -56,7 +56,7 @@ Contributions are welcome!
 
 
 
-## ⭐ Support
+## Support
 
 If you like this repo:
 
@@ -65,7 +65,7 @@ If you like this repo:
 
 
 
-## 📌 Final Thought
+## Final Thought
 
 > "The best way to learn programming is by building real projects."
 

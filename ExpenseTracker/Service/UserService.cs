@@ -25,6 +25,11 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
+    public void Save()
+    {
+        throw new NotImplementedException();
+    }
+
     public bool TryLoadUserIntoSession()
     {
         if( !_userRepo.Exist()) return false;
@@ -36,9 +41,10 @@ public class UserService : IUserService
         return true;
     }
 
-    public bool TryRegisterAndLoadNewUser(string name, decimal incomePerMonth)
+    public bool TryRegisterAndLoadNewUser(User newUserDto)
     {
-        User user = new User(name, incomePerMonth);
+        User user = newUserDto; //Validation is needed here, dto is replacable
+
         if(user == null) return false;
         _userSession.CurrentUser = user;
         return true;

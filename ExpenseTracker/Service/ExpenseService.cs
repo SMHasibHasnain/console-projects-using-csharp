@@ -23,9 +23,11 @@ public class ExpenseService : IExpenseService
         return true;    
     }
 
-    public void AddNewExpense()
+    public void AddNewExpense(Expense expenseDto)
     {
-        
+        //Validation here
+        if(expenseDto == null) return;
+        _userSession.ExpenseList.Add(expenseDto);  
     }
 
     public List<Expense> GetExpenseList()
@@ -33,19 +35,18 @@ public class ExpenseService : IExpenseService
         throw new NotImplementedException();
     }
 
-    public void ShowTotalSummary()
+    public void TotalSummary()
     {
         throw new NotImplementedException();
     }
 
-    public void ViewAllExpenses()
+    public void Save()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void SaveAndExit()
     {
         throw new NotImplementedException();
     }
-
 }
