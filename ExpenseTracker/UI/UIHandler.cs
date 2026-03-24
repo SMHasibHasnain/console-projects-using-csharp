@@ -136,7 +136,7 @@ public class UIHandler
         return new Expense(title, category, amount, note);
     }
 
-    public void ShowAllExpenses(List<Expense> expenseList)
+    public void ShowAllExpenses(IEnumerable<Expense> expenseList)
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("--- All Expenses List --");

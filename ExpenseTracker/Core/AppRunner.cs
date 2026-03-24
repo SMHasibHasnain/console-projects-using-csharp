@@ -49,11 +49,13 @@ public class AppRunner : IAppRunner
                 break;
 
             case MenuItem.ShowTotalSummary:
-                _expenseService.TotalSummary();
+                var listLength = _expenseService.ListLength();
+                var uniqueCategoryCount = _expenseService.UniqueCategoryCount();
                 break;
 
             case MenuItem.ViewAllExpenses:
-                _uiHandler.ShowAllExpenses( _userSession.ExpenseList);
+                IEnumerable<Expense> enumurableExpenseList = _userSession.ExpenseList; 
+                _uiHandler.ShowAllExpenses(enumurableExpenseList);
                 break;    
 
             case MenuItem.EditProfile:

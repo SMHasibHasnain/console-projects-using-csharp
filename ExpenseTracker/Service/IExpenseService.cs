@@ -7,6 +7,8 @@ public interface IExpenseService
     void AddNewExpense(Expense expenseDto);
     List<Expense> GetExpenseList();
     void Save();
-    void TotalSummary();
+    int ListLength();
     bool TryLoadExpenseIntoSession();
+    string[] UniqueCategoryList();
+    int UniqueCategoryCount();
 }
