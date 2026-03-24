@@ -14,17 +14,21 @@ public class ExpenseService : IExpenseService
         _userSession = userSession;
     }
 
+    public bool TryLoadExpenseIntoSession()
+    {
+        if(!_expenseRepo.Exists() && _expenseRepo.getList() == null) 
+            return false;
+
+        _userSession.ExpenseList = _expenseRepo.getList();
+        return true;    
+    }
+
     public void AddNewExpense()
     {
-        throw new NotImplementedException();
+        
     }
 
     public List<Expense> GetExpenseList()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void SaveAndExit()
     {
         throw new NotImplementedException();
     }
@@ -34,13 +38,14 @@ public class ExpenseService : IExpenseService
         throw new NotImplementedException();
     }
 
-    public bool TryLoadExpenseIntoSession()
-    {
-        throw new NotImplementedException();
-    }
-
     public void ViewAllExpenses()
     {
         throw new NotImplementedException();
     }
+
+    public void SaveAndExit()
+    {
+        throw new NotImplementedException();
+    }
+
 }

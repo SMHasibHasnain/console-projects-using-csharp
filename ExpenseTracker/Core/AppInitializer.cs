@@ -38,12 +38,12 @@ public class AppInitializer : IAppInitializer
                 var isValid = _userService.TryRegisterAndLoadNewUser(name, incomePerMonth);
                 if(isValid)
                 {
-                    _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser);
+                    _uiHandler.RegistrationCompleteMsg(_userSession.CurrentUser.Name);
                     isRegistered = true;
                 }
                 else
                 {
-                    _uiHandler.RegistrationFaildMsg();
+                    _uiHandler.RegistrationFailedMsg();
                     _uiHandler.TryAgainMsg();
                 }
             }

@@ -78,14 +78,14 @@ public class UIHandler
         }
     }
 
-    public void RegistrationCompleteMsg(User currentUser)
+    public void RegistrationCompleteMsg(string currentUserName)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"\nRegistration successful! Profile created for {currentUser.Name}.");
+        Console.WriteLine($"\nRegistration successful! Profile created for {currentUserName}.");
         Console.ResetColor();
     }
 
-    public void RegistrationFaildMsg()
+    public void RegistrationFailedMsg()
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("\nRegistration failed. Please provide valid information.");

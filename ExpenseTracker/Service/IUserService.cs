@@ -6,6 +6,6 @@ public interface IUserService
 {
     void EditProfile();
     User GetUser();
-    void RegisterNewUser();
+    bool TryRegisterAndLoadNewUser(string name, decimal incomePerMonth);
     bool TryLoadUserIntoSession();
 }

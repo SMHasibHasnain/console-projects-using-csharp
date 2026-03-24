@@ -6,11 +6,15 @@ using ExpenseTracker.Service;
 using ExpenseTracker.Shared;
 using ExpenseTracker.UI;
 
+var userFile = "user.json";
+var expenseFile = "expenseList.json";
+var logFile = "logs.txt";
+
 UserSession userSession = new();
 UIHandler uiHandler = new();
-IExpenseRepository expenseRepo = new ExpenseRepository();
-IUserRepository userRepo = new UserRepository();
-ILogKeeper logKeeper = new LogKeeper();
+IExpenseRepository expenseRepo = new ExpenseRepository(expenseFile);
+IUserRepository userRepo = new UserRepository(userFile);
+ILogKeeper logKeeper = new LogKeeper(logFile);
 IExpenseService expenseService = new ExpenseService(expenseRepo, userSession);
 IUserService userService = new UserService(userRepo, userSession);
 
