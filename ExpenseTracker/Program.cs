@@ -30,6 +30,7 @@ try
     
 } catch (Exception ex)
 {
-    uiHandler.GlobalErrorMsg();
-    logKeeper.TakeEntry(ex);
+    // uiHandler.GlobalErrorMsg();
+    // logKeeper.TakeEntry(ex);
+    throw;
 }

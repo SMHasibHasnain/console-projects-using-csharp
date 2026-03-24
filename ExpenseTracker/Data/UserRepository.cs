@@ -24,4 +24,10 @@ public class UserRepository : IUserRepository
         var user = JsonSerializer.Deserialize<User>(jsonData);
         return user;
     }
+
+    public void Save(User currentUser)
+    {
+        var userJson = JsonSerializer.Serialize(currentUser);
+        File.WriteAllText(_userFile, userJson);
+    }
 }

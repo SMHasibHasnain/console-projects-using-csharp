@@ -140,6 +140,7 @@ public class UIHandler
     {
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("--- All Expenses List --");
+        Console.ResetColor();
         foreach(var item in expenseList)
         {
             Console.WriteLine($"{item.Title}  {item.Category}  {item.Amount}  {item.Note}");

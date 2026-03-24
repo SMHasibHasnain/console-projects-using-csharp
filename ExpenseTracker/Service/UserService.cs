@@ -27,7 +27,7 @@ public class UserService : IUserService
 
     public void Save()
     {
-        throw new NotImplementedException();
+        _userRepo.Save(_userSession.CurrentUser);
     }
 
     public bool TryLoadUserIntoSession()

@@ -6,4 +6,5 @@ public interface IUserRepository
 {
     bool Exist();
     User Get();
+    void Save(User currentUser);
 }

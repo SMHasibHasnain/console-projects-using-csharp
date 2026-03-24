@@ -17,10 +17,11 @@ public class ExpenseRepository : IExpenseRepository
         return false;
     }
 
-    public List<Expense> getList()
+    public List<Expense> GetList()
     {
         var expenseListJson = File.ReadAllText(_expenseListFile);
-        return JsonSerializer.Deserialize<List<Expense>>(expenseListJson)!;
+        List<Expense> expense = JsonSerializer.Deserialize<List<Expense>>(expenseListJson)!;
+        return expense;
     }
 
     public void Save(List<Expense> expenseList)

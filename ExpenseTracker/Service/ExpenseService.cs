@@ -16,10 +16,10 @@ public class ExpenseService : IExpenseService
 
     public bool TryLoadExpenseIntoSession()
     {
-        if(!_expenseRepo.Exists() && _expenseRepo.getList() == null) 
+        if(!_expenseRepo.Exists() && _expenseRepo.GetList() == null) 
             return false;
 
-        _userSession.ExpenseList = _expenseRepo.getList();
+        _userSession.ExpenseList = _expenseRepo.GetList();
         return true;    
     }
 
@@ -27,6 +27,11 @@ public class ExpenseService : IExpenseService
     {
         //Validation here
         if(expenseDto == null) return;
+
+        if(_userSession.ExpenseList == null)
+        {
+            _userSession.ExpenseList = new List<Expense>();
+        }
         _userSession.ExpenseList.Add(expenseDto);  
     }
 
@@ -45,8 +50,4 @@ public class ExpenseService : IExpenseService
         _expenseRepo.Save(_userSession.ExpenseList);
     }
 
-    public void SaveAndExit()
-    {
-        throw new NotImplementedException();
-    }
 }
