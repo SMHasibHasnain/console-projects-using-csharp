@@ -54,27 +54,31 @@ public class ExpenseService : IExpenseService
     public string[] UniqueCategoryList()
     {
         string[] categoryList = CategoryList();
-        int categoryListSize = categoryList.Length;
-        int ptr = 0;
-
-        string[] uniqueCategoryList = new string[categoryListSize]; 
+        string[] uniqueCategoryList = new string[categoryList.Length];
         int uniqueCount = 0;
 
-        for(int i=0; i<categoryListSize; i++)
+        for (int i = 0; i < categoryList.Length; i++)
         {
-            if(uniqueCategoryList.Length == 0) uniqueCategoryList[uniqueCount++] = categoryList[ptr++];
-            for(int j=0; j<uniqueCount; j++)
+            bool isDuplicate = false;
+        
+            for (int j = 0; j < uniqueCount; j++)
             {
-                if(categoryList[i] != uniqueCategoryList[j]) continue;
-                uniqueCategoryList[j] = categoryList[i];
+                if (categoryList[i] == uniqueCategoryList[j])
+                {
+                    isDuplicate = true;
+                    break; 
+                }
+            }
+
+            if (!isDuplicate)
+            {
+                uniqueCategoryList[uniqueCount] = categoryList[i];
                 uniqueCount++;
             }
         }
 
         Array.Resize(ref uniqueCategoryList, uniqueCount);
-
         return uniqueCategoryList;
-
     }
 
     public int UniqueCategoryCount()

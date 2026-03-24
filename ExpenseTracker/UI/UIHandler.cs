@@ -146,4 +146,24 @@ public class UIHandler
             Console.WriteLine($"{item.Title}  {item.Category}  {item.Amount}  {item.Note}");
         }
     }
+
+    public void ShowSummary(int listLength, int uniqueCategoryCount)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n==================================");
+        Console.WriteLine("         EXPENSE SUMMARY          ");
+        Console.WriteLine("==================================");
+        Console.ResetColor();
+
+        Console.WriteLine($"Total Expenses Recorded : {listLength}");
+        Console.WriteLine($"Categories Used         : {uniqueCategoryCount}");
+
+        if (listLength == 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nYou haven't added any expenses yet.");
+            Console.ResetColor();
+        }
+        Console.WriteLine();
+    }
 }
