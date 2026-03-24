@@ -51,6 +51,7 @@ public class AppRunner : IAppRunner
             case MenuItem.ShowTotalSummary:
                 var listLength = _expenseService.ListLength();
                 var uniqueCategoryCount = _expenseService.UniqueCategoryCount();
+                _uiHandler.ShowSummary(listLength, uniqueCategoryCount);
                 break;
 
             case MenuItem.ViewAllExpenses:
