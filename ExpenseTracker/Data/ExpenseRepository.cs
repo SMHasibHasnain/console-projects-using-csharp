@@ -22,4 +22,10 @@ public class ExpenseRepository : IExpenseRepository
         var expenseListJson = File.ReadAllText(_expenseListFile);
         return JsonSerializer.Deserialize<List<Expense>>(expenseListJson)!;
     }
+
+    public void Save(List<Expense> expenseList)
+    {
+        var expenseListJson = JsonSerializer.Serialize(expenseList);
+        File.WriteAllText(_expenseListFile, expenseListJson);
+    }
 }

@@ -42,7 +42,7 @@ public class ExpenseService : IExpenseService
 
     public void Save()
     {
-        
+        _expenseRepo.Save(_userSession.ExpenseList);
     }
 
     public void SaveAndExit()
