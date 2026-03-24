@@ -22,13 +22,9 @@ public class AppInitializer : IAppInitializer
 
     public void Init()
     {
-        if(_userService.DoesUserExist())
+        if(_userService.TryLoadUserIntoSession() 
+            && _expenseService.TryLoadExpenseIntoSession())
         {
-            _userSession.CurrentUser = _userService
-                .GetUser();
-            _userSession.ExpenseList = _expenseService
-                .GetExpenseList();
-            
             _uiHandler.WelcomeBackMsg( _userSession
                 .CurrentUser.Name);
 

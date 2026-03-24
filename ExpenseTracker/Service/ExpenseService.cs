@@ -1,13 +1,16 @@
 namespace ExpenseTracker.Service;
 
+using ExpenseTracker.Data;
 using ExpenseTracker.Entity;
 using ExpenseTracker.Shared;
 
 public class ExpenseService : IExpenseService
 {
     private readonly UserSession _userSession;
-    public ExpenseService(UserSession userSession)
+    private readonly IExpenseRepository _expenseRepo;
+    public ExpenseService(IExpenseRepository expenseRepo, UserSession userSession)
     {
+        _expenseRepo = expenseRepo;
         _userSession = userSession;
     }
 
@@ -27,6 +30,11 @@ public class ExpenseService : IExpenseService
     }
 
     public void ShowTotalSummary()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool TryLoadExpenseIntoSession()
     {
         throw new NotImplementedException();
     }

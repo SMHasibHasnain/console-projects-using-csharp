@@ -8,5 +8,6 @@ public interface IExpenseService
     List<Expense> GetExpenseList();
     void SaveAndExit();
     void ShowTotalSummary();
+    bool TryLoadExpenseIntoSession();
     void ViewAllExpenses();
 }

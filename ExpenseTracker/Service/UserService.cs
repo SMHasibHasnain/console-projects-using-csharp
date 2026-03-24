@@ -1,20 +1,18 @@
 namespace ExpenseTracker.Service;
 
+using ExpenseTracker.Data;
 using ExpenseTracker.Entity;
 using ExpenseTracker.Shared;
 
 public class UserService : IUserService
 {
     private readonly UserSession _userSession;
+    private readonly IUserRepository _userRepo;
     
-    public UserService(UserSession userSession)
+    public UserService(IUserRepository userRepo, UserSession userSession)
     {
+        _userRepo = userRepo;
         _userSession = userSession;
-    }
-
-    public bool DoesUserExist()
-    {
-        throw new NotImplementedException();
     }
 
     public void EditProfile()
@@ -30,5 +28,16 @@ public class UserService : IUserService
     public void RegisterNewUser()
     {
         throw new NotImplementedException();
+    }
+
+    public bool TryLoadUserIntoSession()
+    {
+        if(_userRepo.Exist())
+        {
+            _userSession.CurrentUser = _userRepo.Get();
+            return true;
+        }
+        
+        return false;
     }
 }
