@@ -47,4 +47,9 @@ Thumbs.db
 appsettings.Development.json
 
 # Data
-.logs
+._logs/
+*_logs/
+_logs/
+._userData/
+*_userData/
+_userData
