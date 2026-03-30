@@ -4,25 +4,34 @@ namespace ExpenseTracker.UI;
 
 public class UIHandler
 {
-    public void GlobalErrorMsg()
+    public void Heading(string text)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(text);
+        Console.WriteLine("==================================" + Environment.NewLine);
+        Console.ResetColor();
+    }
+
+    public void ErrorMsg(string text)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("\nAn unexpected error occurred! Please check the logs or restart the app.");
-        Console.ResetColor();
+        Console.WriteLine(text);
+        Console.ResetColor();        
+    }
+
+    public void GlobalErrorMsg()
+    {
+        ErrorMsg("An unexpected error occurred! Please check the logs or restart the app.");
     }
 
     public void MenuHeading()
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n==================================");
-        Console.WriteLine("         EXPENSE TRACKER          ");
-        Console.WriteLine("==================================");
-        Console.ResetColor();
+        Heading("EXPENSE TRACKER");
     }
 
     public void MenuList()
     {
-        Console.WriteLine("\n1. Add New Expense");
+        Console.WriteLine("1. Add New Expense");
         Console.WriteLine("2. Show Total Summary");
         Console.WriteLine("3. View All Expenses");
         Console.WriteLine("4. Edit Profile");
@@ -38,16 +47,12 @@ public class UIHandler
 
     public void MenuDefaultCaseText()
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("\nInvalid menu option! Please select a valid number from the list.");
-        Console.ResetColor();
+        ErrorMsg("Invalid menu option! Please select a valid number from the list.");
     }
 
     public void UserIncorrectChoiceText()
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("\nInvalid input format! Please enter numbers only.");
-        Console.ResetColor();
+        ErrorMsg("Invalid input format! Please enter numbers only.");
     }
 
     public void WelcomeBackMsg(string name)
@@ -97,16 +102,12 @@ public class UIHandler
 
     public void TryAgainMsg()
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("Please try again...");
-        Console.ResetColor();
+        ErrorMsg("Please try again...");
     }
 
     public Expense AskExpenseInfo()
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n--- Enter Expense Details ---");
-        Console.ResetColor();
+        Heading("ADD EXPENSE DETAILS");
 
         Console.Write("Enter a title for this expense (Optional): ");
         string title = Console.ReadLine() ?? string.Empty;
@@ -138,9 +139,7 @@ public class UIHandler
 
     public void ShowAllExpenses(IEnumerable<Expense> expenseList)
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("--- All Expenses List --");
-        Console.ResetColor();
+        Heading("ALL EXPENSES LIST");
         foreach(var item in expenseList)
         {
             Console.WriteLine($"{item.Title}  {item.Category}  {item.Amount}  {item.Note}");
@@ -149,12 +148,7 @@ public class UIHandler
 
     public void ShowSummary(int listLength, int uniqueCategoryCount)
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n==================================");
-        Console.WriteLine("         EXPENSE SUMMARY          ");
-        Console.WriteLine("==================================");
-        Console.ResetColor();
-
+        Heading("EXPENSE SUMMARY");
         Console.WriteLine($"Total Expenses Recorded : {listLength}");
         Console.WriteLine($"Categories Used         : {uniqueCategoryCount}");
 
