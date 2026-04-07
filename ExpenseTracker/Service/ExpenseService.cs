@@ -1,9 +1,11 @@
 namespace ExpenseTracker.Service;
 
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using ExpenseTracker.Data;
 using ExpenseTracker.Entity;
 using ExpenseTracker.Shared;
+using Microsoft.VisualBasic;
 
 public class ExpenseService : IExpenseService
 {
@@ -53,32 +55,38 @@ public class ExpenseService : IExpenseService
 
     public string[] UniqueCategoryList()
     {
+
         string[] categoryList = CategoryList();
-        string[] uniqueCategoryList = new string[categoryList.Length];
-        int uniqueCount = 0;
+        var uniqueCategoryList = categoryList.Distinct().ToArray();
 
-        for (int i = 0; i < categoryList.Length; i++)
-        {
-            bool isDuplicate = false;
-        
-            for (int j = 0; j < uniqueCount; j++)
-            {
-                if (categoryList[i] == uniqueCategoryList[j])
-                {
-                    isDuplicate = true;
-                    break; 
-                }
-            }
-
-            if (!isDuplicate)
-            {
-                uniqueCategoryList[uniqueCount] = categoryList[i];
-                uniqueCount++;
-            }
-        }
-
-        Array.Resize(ref uniqueCategoryList, uniqueCount);
         return uniqueCategoryList;
+
+        // string[] categoryList = CategoryList();
+        // string[] uniqueCategoryList = new string[categoryList.Length];
+        // int uniqueCount = 0;
+
+        // for (int i = 0; i < categoryList.Length; i++)
+        // {
+        //     bool isDuplicate = false;
+        
+        //     for (int j = 0; j < uniqueCount; j++)
+        //     {
+        //         if (categoryList[i] == uniqueCategoryList[j])
+        //         {
+        //             isDuplicate = true;
+        //             break; 
+        //         }
+        //     }
+
+        //     if (!isDuplicate)
+        //     {
+        //         uniqueCategoryList[uniqueCount] = categoryList[i];
+        //         uniqueCount++;
+        //     }
+        // }
+
+        // Array.Resize(ref uniqueCategoryList, uniqueCount);
+        // return uniqueCategoryList;
     }
 
     public int UniqueCategoryCount()
