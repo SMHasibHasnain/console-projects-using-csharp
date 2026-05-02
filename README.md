@@ -41,6 +41,7 @@
 | Banking System | Banking simulation | OOP, Exception Handling | Not Started |
 | Student Management | Manage student data | File Handling | Not Started |
 | Inventory System | Product tracking | Collections | Not Started |
+| API Log Analyzer | Analyze Thousands Of Logs | Linq, Generics, Delegates, Stream | In Progress |
 
 > More projects coming soon...
 
