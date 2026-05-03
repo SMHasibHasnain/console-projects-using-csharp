@@ -24,6 +24,9 @@ public class ApiLogRepository : IApiLogRepository
 
         using(var _reader = new StreamReader(_filePath))
         {
+            string header = _reader.ReadLine();
+            var headerColumns = header.Split(',').Select(h => h.Trim()).ToList();
+
             while (!_reader.EndOfStream)
             {
                 string line = _reader.ReadLine();
@@ -46,8 +49,16 @@ public class ApiLogRepository : IApiLogRepository
                     UserAgent = row[6],
                     RequestSizeByte = int.Parse(row[7]),
                     ResponseSizeByte = int.Parse(row[8]),
-                    RequestId = row[9] 
+                    RequestId = row[9],
                 };
+
+                newApi.AdditionalData = new Dictionary<string, string>();
+                for(int j=10; j < row.Length; j++)
+                {
+                    var key = headerColumns[j];
+                    var value = row[j];
+                    newApi.AdditionalData[key] = value;
+                }   
 
                 _session.ApiLogDataList.Add(newApi);
             }
