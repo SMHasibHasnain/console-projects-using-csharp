@@ -24,10 +24,10 @@ public class Menu
         MenuActions.Add("Top x Features", () =>
         {
             var (feature, topX) = _cli.SelectXAndFeature();
-            Summery.Top(feature, topX);
+            _summery.Top(feature, topX);
         });
 
-        MenuActions.Add("Search by Feature", () => Summery.Search());
+        MenuActions.Add("Search by Feature", () => _summery.Search());
 
     }
 }
