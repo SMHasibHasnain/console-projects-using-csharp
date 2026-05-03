@@ -37,7 +37,7 @@
 
 | Project | Description | Concepts | Status
 |--------|------------|----------|-----------|
-| Expense Tracker | Track Daily Expenses | OOP, File Handling| Processing  |
+| Expense Tracker | Track Daily Expenses | OOP, File Handling| In Progress  |
 | Banking System | Banking simulation | OOP, Exception Handling | Not Started |
 | Student Management | Manage student data | File Handling | Not Started |
 | Inventory System | Product tracking | Collections | Not Started |

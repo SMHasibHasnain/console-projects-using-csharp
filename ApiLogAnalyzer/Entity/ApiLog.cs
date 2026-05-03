@@ -13,6 +13,6 @@ public class ApiLog
     public int ResponseSizeByte { get; set; }
     public string? RequestId { get; set; }
 
-    Dictionary<string, string>? AdditionalData { get; set; }
+    public Dictionary<string, string>? AdditionalData { get; set; }
 
 }

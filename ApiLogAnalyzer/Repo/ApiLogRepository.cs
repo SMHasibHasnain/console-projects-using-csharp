@@ -61,6 +61,7 @@ public class ApiLogRepository : IApiLogRepository
                 }   
 
                 _session.ApiLogDataList.Add(newApi);
+                _session.ApiLogColumns = headerColumns;
             }
         }
 

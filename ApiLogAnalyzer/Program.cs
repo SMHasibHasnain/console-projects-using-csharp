@@ -5,7 +5,8 @@ using ApiLogAnalyzer.Shared;
 
 UserSession session = new UserSession();
 IApiLogRepository apiRepo = new ApiLogRepository(session);
-IAppRunner appRunner = new AppRunner(apiRepo);
+IAppRunner appRunner = new AppRunner(apiRepo, session);
+
 
 
 try
