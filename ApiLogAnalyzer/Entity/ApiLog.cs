@@ -2,7 +2,7 @@ namespace ApiLogAnalyzer.Entity;
 
 public class ApiLog
 {
-    public string Timestamp { get; set; }
+    public string? Timestamp { get; set; }
     public EHttpMethod HttpMethod { get; set; }
     public string? Endpoint { get; set; } 
     public HttpStatus HttpStatusCode { get; set; }

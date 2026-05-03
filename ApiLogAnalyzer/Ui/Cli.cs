@@ -4,7 +4,7 @@ using Spectre.Console;
 
 namespace ApiLogAnalyzer.Ui;
 
-class Cli
+public class Cli
 {
     private UserSession _session;
     public Cli(UserSession session)
@@ -12,54 +12,19 @@ class Cli
         _session = session;
     }
 
-    public void MakeApiDataList()
+    public void ShowLoadingProgress(string v, Action job)
     {
-        var table = new Table();
-
-        int limit = 15;
-        
-        foreach(var column in _session.ApiLogColumns)
-        {
-            if(limit-- <= 0) break;
-            table.AddColumn(column);
-        }
-
-        limit = 5;
-
-        foreach(var apiLog in _session.ApiLogDataList)
-        {
-            var row = new List<string>
+        AnsiConsole.Progress()
+            .Start(ctx =>
             {
-                apiLog.Timestamp,
-                apiLog.HttpMethod.ToString(),
-                apiLog.Endpoint,
-                apiLog.HttpStatusCode.ToString(),
-                apiLog.ResponseTimeMs.ToString(),
-                apiLog.ClientIp,
-                apiLog.UserAgent,
-                apiLog.RequestSizeByte.ToString(),
-                apiLog.ResponseSizeByte.ToString(),
-                apiLog.RequestId
-            };
+                var task = ctx.AddTask(v);
+                job();
+                task.Increment(100);
+            });
 
-            foreach(var column in _session.ApiLogColumns.Skip(10))
-            {
-                if(limit-- <= 0) break;
-
-                if(apiLog.AdditionalData.ContainsKey(column))
-                {
-                    row.Add(apiLog.AdditionalData[column]);
-                }
-                else
-                {
-                    row.Add("");
-                }
-            }
-
-            table.AddRow(row.ToArray());
-        }
-
-        AnsiConsole.Write(table);
-
+        AnsiConsole.MarkupLine("[green]API logs loaded successfully![/]");
+        AnsiConsole.WriteLine("Click Any Key to Continue...");
+        Console.ReadKey();
+        Console.Clear();    
     }
 }

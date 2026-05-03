@@ -2,10 +2,12 @@
 using ApiLogAnalyzer.Core;
 using ApiLogAnalyzer.Repo;
 using ApiLogAnalyzer.Shared;
+using ApiLogAnalyzer.Ui;
 
 UserSession session = new UserSession();
+Cli cli = new Cli(session);
 IApiLogRepository apiRepo = new ApiLogRepository(session);
-IAppRunner appRunner = new AppRunner(apiRepo, session);
+IAppRunner appRunner = new AppRunner(apiRepo, cli, session);
 
 
 

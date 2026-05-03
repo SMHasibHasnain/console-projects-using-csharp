@@ -24,12 +24,12 @@ public class ApiLogRepository : IApiLogRepository
 
         using(var _reader = new StreamReader(_filePath))
         {
-            string header = _reader.ReadLine();
+            string header = _reader.ReadLine()!;
             var headerColumns = header.Split(',').Select(h => h.Trim()).ToList();
 
             while (!_reader.EndOfStream)
             {
-                string line = _reader.ReadLine();
+                string line = _reader.ReadLine()!;
                 string pattern = @",(?=(?:[^""]*""[^""]*"")*[^""]*$)";
                 var row = Regex.Split(line, pattern);
                 
