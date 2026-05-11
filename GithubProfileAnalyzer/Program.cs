@@ -8,16 +8,15 @@ ICache cache = new Cache();
 
 IUserInterface ui = new Cli();
 
-using HttpClient client = new();
+using HttpClient httpClient = new();
 
-IGithubApiClient apiClient = new GithubApiClient(client, cache);
+IGithubApiClient apiClient = new GithubApiClient(httpClient, cache);
 
-IProfileService profileService = new ProfileService();
+IProfileService profileService = new ProfileService(apiClient);
 IRepositoryService repositoryService = new RepositoryService();
 
 IController controller = new Controller(profileService, repositoryService, ui);
-
-IAppRunner app = new AppRunner(ui, apiClient);
+IAppRunner app = new AppRunner(controller, ui);
 
 
 try
