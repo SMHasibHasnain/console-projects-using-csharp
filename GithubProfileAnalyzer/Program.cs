@@ -21,7 +21,7 @@ IAppRunner app = new AppRunner(controller, ui);
 
 try
 {
-    app.Run();
+    await app.RunAsync();
 }
 catch (Exception e)
 {
