@@ -1,4 +1,5 @@
 using GithubProfileAnalyzer.Model;
+
 namespace GithubProfileAnalyzer.UI;
 
 public interface IUserInterface
