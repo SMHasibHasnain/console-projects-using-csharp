@@ -1,3 +1,4 @@
+using System.Dynamic;
 using GithubProfileAnalyzer.Model;
 using GithubProfileAnalyzer.Service;
 using GithubProfileAnalyzer.UI;
@@ -9,19 +10,20 @@ public class Controller(IProfileService profileService, IRepositoryService repo,
     private readonly IProfileService _profileService = profileService;
     private readonly IRepositoryService _repoService = repo;
     private readonly IUserInterface _ui = ui;
-    public Dictionary<string, Action<string, List<string>, int?>> Menu = [];
-
-    public void MenuGenerator()
-    {
-        Menu.Add("help", (name, list, value) =>
+    public Dictionary<string, Func<(string name, List<string> list, int? value), Task>> Menu { get; set; } = new();
+    public void MenuGenerator(){
+        Menu.Add("help", (inputPackage) =>
         {
             _ui.HelpForMenuSelection(Menu.Keys);
+            return Task.CompletedTask;
         });
 
-        Menu.Add("profile", (name, list, value) =>
+        Menu.Add("profile", async (inputPackage) =>
         {
-            User user = _profileService.GetUserProfile(name);
+            string url = $@"users/{inputPackage.name}";
+            User user = await _profileService.GetUserProfile(inputPackage.name, url);
             _ui.ShowProfile(user);
         });
     }
+
 }
