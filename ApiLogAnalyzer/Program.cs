@@ -13,8 +13,6 @@ IApiLogService apiLogService = new ApiLogService(session, apiRepo);
 Menu menu = new Menu(session, cli, summery);
 IAppRunner appRunner = new AppRunner(cli, session, menu, apiLogService);
 
-
-
 try
 {
     appRunner.Run();

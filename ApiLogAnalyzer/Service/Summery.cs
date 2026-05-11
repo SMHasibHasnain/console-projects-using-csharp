@@ -18,10 +18,11 @@ public class Summery : ISummery
     public void Top(string feature, int topX)
     {
         var itemIndex = _session.ApiLogColumns.IndexOf(feature);
+        
 
     }
 
-    public static void Search()
+    public void Search()
     {
 
     }
