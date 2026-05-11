@@ -4,5 +4,5 @@ namespace GithubProfileAnalyzer.Service;
 
 public interface IProfileService
 {
-    User GetUserProfile(string name);
+    Task<User> GetUserProfile(string name, string url);
 }

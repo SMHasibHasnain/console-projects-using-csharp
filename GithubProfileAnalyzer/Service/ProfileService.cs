@@ -1,12 +1,17 @@
+using GithubProfileAnalyzer.Data;
 using GithubProfileAnalyzer.Model;
 using GithubProfileAnalyzer.Service;
 
 namespace GithubProfileAnalyzer.Service;
 
-public class ProfileService : IProfileService
+public class ProfileService(IGithubApiClient apiClient) : IProfileService
 {
-    public User GetUserProfile(string name)
+    private IGithubApiClient _apiClient = apiClient;
+    public async Task<User> GetUserProfile(string name, string url)
     {
-        throw new NotImplementedException();
+        User user = await _apiClient.FetchAsync(name, url);
+
+
+        return user;
     }
 }
