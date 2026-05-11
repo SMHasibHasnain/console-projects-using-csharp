@@ -39,7 +39,7 @@
 |--------|------------|----------|-----------|
 | Expense Tracker | Track Daily Expenses | OOP, File Handling| In Progress  |
 | Banking System | Banking simulation | OOP, Exception Handling | Not Started |
-| Student Management | Manage student data | File Handling | Not Started |
+| Github Profile Analyzer | View Github Profile Data, Analyze Repos, Compare multiple repos and user activities | API, Record, Struct, Delegates | In Progress |
 | Inventory System | Product tracking | Collections | Not Started |
 | API Log Analyzer | Analyze Thousands Of Logs | Linq, Generics, Delegates, Stream | In Progress |
 
