@@ -1,4 +1,4 @@
-namespace GithubProfileAnalyzer.Core;
+namespace GithubProfileAnalyzer.Service;
 
 public interface IRepositoryService
 {

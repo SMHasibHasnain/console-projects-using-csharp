@@ -4,7 +4,7 @@ using GithubProfileAnalyzer.UI;
 
 namespace GithubProfileAnalyzer.Core;
 
-public class Controller(IProfileService profileService, IRepositoryService repo, IUserInterface ui)
+public class Controller(IProfileService profileService, IRepositoryService repo, IUserInterface ui) : IController
 {
     private readonly IProfileService _profileService = profileService;
     private readonly IRepositoryService _repoService = repo;
@@ -16,9 +16,10 @@ public class Controller(IProfileService profileService, IRepositoryService repo,
         Menu.Add("help", (name, list, value) =>
         {
             _ui.HelpForMenuSelection(Menu.Keys);
-        });    
+        });
 
-        Menu.Add("profile", (name, list, value) => {
+        Menu.Add("profile", (name, list, value) =>
+        {
             User user = _profileService.GetUserProfile(name);
             _ui.ShowProfile(user);
         });
