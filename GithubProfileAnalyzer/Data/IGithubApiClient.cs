@@ -4,5 +4,7 @@ namespace GithubProfileAnalyzer.Data;
 
 public interface IGithubApiClient
 {
-    Task<User> FetchAsync(string name, string url);
+    Task<string> FetchAsync(string url);
+    Task<User> FetchProfileAsync(string url);
+    Task<List<Follower>> FetchFollowersListAsync(string url);
 }
