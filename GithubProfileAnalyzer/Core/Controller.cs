@@ -21,7 +21,7 @@ public class Controller(IProfileService profileService, IRepositoryService repo,
         Menu.Add("profile", async (inputPackage) =>
         {
             string url = $@"users/{inputPackage.name}";
-            User user = await _profileService.GetUserProfile(inputPackage.name, url);
+            User user = await _profileService.GetUserProfile(url);
             _ui.ShowProfile(user);
         });
     }
